@@ -20,8 +20,7 @@ Standalone and versionable archive of n8n workflows from the official [n8n.io/wo
 
 ```
 n8nworkflows.xyz/
-├── archive/
-│   └── workflows/
+├── workflows/
 │       ├── workflow-name-id-1/
 │       │   ├── readme.md
 │       │   ├── workflow.json
@@ -36,6 +35,26 @@ n8nworkflows.xyz/
 Each workflow is isolated in its own folder to facilitate navigation, versioning, and individual import.
 
 ---
+
+## 🚀 Newcomer Quick Start
+
+If you are new to this repository, start with this mental model:
+
+1. **This is a content archive, not an app runtime**: most repository content is workflow data (JSON + docs + preview image).
+2. **Top-level `workflows/` is the source of truth**: each folder corresponds to one template from n8n.io/workflows and is identified by title + numeric ID.
+3. **Each workflow folder should include four companion artifacts**:
+   - `readme-<id>.md` (human-readable description)
+   - workflow JSON export (importable into n8n)
+   - `metada-<id>.json` (metadata mirror from the catalog; note the historical filename spelling)
+   - `<id>-...webp` screenshot
+
+### Typical contributor flow
+
+- Pick a workflow directory inside `workflows/`.
+- Review `readme-<id>.md` first for intent and setup.
+- Inspect the workflow JSON to understand triggers, nodes, and credentials expected in n8n.
+- Use `metada-<id>.json` for tags, author fields, and catalog linkage.
+
 
 ## 🔗 Useful Links
 
@@ -72,7 +91,7 @@ Each workflow folder contains **exactly 4 files**:
 |:---|:---|
 | **`readme.md`** | Complete workflow description in Markdown (original template's `readme` field) |
 | **`workflow.json`** | Raw workflow export in JSON format, ready to be imported into n8n |
-| **`metadata.json`** | Metadata: author (`user_*`), tags, creation date, public link to `https://n8n.io/workflows/<workflowId>` |
+| **`metada-<id>.json`** | Metadata mirror (author fields, tags, creation date, source URL). The filename uses historical `metada` spelling in this repo. |
 | **`<slug-and-id>.webp`** | Workflow screenshot (hero image from Supabase `worklowscreenshot` bucket) |
 
 ---
